@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Modern Calculator</title>
+</head>
+<body>
+        <div class="calculator">
+        <button class="theme-btn" onclick="toggleTheme()">🌞</button>
+        <div class="display" id="display">0</div>
+        <button class="btn dark" onclick="clearDisplay()">C</button>
+        <button class="btn dark" onclick="appendToDisplay('(')"> ( </button>
+        <button class="btn dark" onclick="appendToDisplay(')')"> ) </button>
+        <button class="btn dark" onclick="appendToDisplay('^')"> ^ </button>
+        <button class="btn number" onclick="appendToDisplay('7')">7</button>
+        <button class="btn number" onclick="appendToDisplay('8')">8</button>
+        <button class="btn number" onclick="appendToDisplay('9')">9</button>
+        <button class="btn dark" onclick="appendToDisplay('/')"> / </button>
+        <button class="btn number" onclick="appendToDisplay('4')">4</button>
+        <button class="btn number" onclick="appendToDisplay('5')">5</button>
+        <button class="btn number" onclick="appendToDisplay('6')">6</button>
+        <button class="btn dark" onclick="appendToDisplay('*')"> * </button>
+        <button class="btn number" onclick="appendToDisplay('1')">1</button>
+        <button class="btn number" onclick="appendToDisplay('2')">2</button>
+        <button class="btn number" onclick="appendToDisplay('3')">3</button>
+        <button class="btn dark" onclick="appendToDisplay('-')"> - </button>
+        <button class="btn number" onclick="appendToDisplay('0')">0</button>
+        <button class="btn number" onclick="appendToDisplay('.')">.</button>
+        <button class="btn backspace" onclick="backspace()">←</button>
+        <button class="btn dark" onclick="calculate()"> = </button>
+        <button class="btn dark" onclick="appendToDisplay('+')"> + </button>
+        <button class="btn dark symbol" onclick="appendToDisplay('Math.sin(')">sin</button>
+        <button class="btn dark symbol" onclick="appendToDisplay('Math.cos(')">cos</button>
+        <button class="btn dark symbol" onclick="appendToDisplay('Math.tan(')">tan</button>
+        <button class="btn dark symbol" onclick="appendToDisplay('Math.log(')">log</button>
+        <button class="btn dark symbol" onclick="appendToDisplay('Math.exp(')">exp</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
