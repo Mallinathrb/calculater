@@ -9,7 +9,16 @@ function appendToDisplay(value) {
     if (displayValue === '0' || displayValue === 'Error') {
         displayValue = value;
     } else {
-        displayValue += value;
+        // Check if the last character is an operator
+        const lastChar = displayValue.slice(-1);
+        const isOperator = /[\+\-\*\/\^]/.test(lastChar);
+
+        // If the last character is an operator and the new value is also an operator, replace the last one
+        if (isOperator && /[\+\-\*\/\^]/.test(value)) {
+            displayValue = displayValue.slice(0, -1) + value;
+        } else {
+            displayValue += value;
+        }
     }
     updateDisplay();
 }
@@ -21,7 +30,24 @@ function clearDisplay() {
 
 function calculate() {
     try {
-        displayValue = eval(displayValue).toString();
+        // Remove trailing operator if present
+        const lastChar = displayValue.slice(-1);
+        if (/[\+\-\*\/\^]/.test(lastChar)) {
+            displayValue = displayValue.slice(0, -1);
+        }
+
+        // Use Number() to avoid security issues with eval
+        let result = eval(displayValue);
+        
+        // Check if the result is a finite number
+        if (!isFinite(result)) {
+            throw new Error('Infinity or NaN');
+        }
+
+        // Format the result to handle decimal values
+        result = result.toFixed(10).replace(/\.?0+$/, '');
+
+        displayValue = result;
         updateDisplay();
     } catch (error) {
         displayValue = 'Error';
@@ -50,7 +76,7 @@ document.addEventListener('keydown', function(event) {
         appendToDisplay(key);
     } else if (key === 'Enter') {
         calculate();
-    } else if (key === 'c' || key === 'C') {
+    } else if (key.toLowerCase() === 'c') {
         clearDisplay();
     } else if (key === 'Backspace') {
         backspace();
