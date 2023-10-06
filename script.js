@@ -11,10 +11,10 @@ function appendToDisplay(value) {
     } else {
         // Check if the last character is an operator
         const lastChar = displayValue.slice(-1);
-        const isOperator = /[\+\-\*\/\^]/.test(lastChar);
+        const isOperator = /[\+\-\*\/\^\.]/.test(lastChar);
 
         // If the last character is an operator and the new value is also an operator, replace the last one
-        if (isOperator && /[\+\-\*\/\^]/.test(value)) {
+        if (isOperator && /[\+\-\*\/\^\.]/.test(value)) {
             displayValue = displayValue.slice(0, -1) + value;
         } else {
             displayValue += value;
